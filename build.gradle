@@ -5,16 +5,56 @@ sourceCompatibility = 1.7
 version = '1.0'
 
 
+allprojects {
+    task hello << { task -> println "I'm $task.project.name" }
+}
+subprojects {
+    hello << { println "- I am part of rm" }
+}
+project(':model').hello << {
+    println "- I'm the largest animal that has ever lived on this planet."
+}
+
 repositories {
     mavenCentral()
 }
 
 apply plugin: "sonar-runner"
 
+allprojects {
+    apply plugin: 'java'
+    group = 'com.aarintech.rm'
+    version = '1.0'
+}
+
+subprojects {
+    apply plugin: 'java'
+    group = 'com.aarintech.rm'
+    version = '1.0'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        testCompile "junit:junit:4.11"
+    }
+}
+
+project(':engine') {
+    dependencies {
+        compile project(':model')
+    }
+}
+
+project(':model') {
+    dependencies {
+    }
+}
+
+
 sonarRunner {
     sonarProperties {
-        property "sonar.host.url", "http://192.168.1.16:9000/sonar"
-        property "sonar.jdbc.url", "jdbc:mysql://192.168.1.16/sonar"
+        property "sonar.host.url", "http://aarintechmain.dyndns.org:9000/sonar"
+        property "sonar.jdbc.url", "jdbc:mysql://aarintechmain.dyndns.org/sonar"
         property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
@@ -39,3 +79,4 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.0'
 }
+
