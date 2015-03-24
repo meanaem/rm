@@ -19,7 +19,7 @@ repositories {
     mavenCentral()
 }
 
-apply plugin: "jacoco"
+//apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
 allprojects {
@@ -51,10 +51,10 @@ project(':model') {
     }
 }
 
-jacoco {
-    // Gradle 1.11 ships with a Jacoco version that doesn't support Java 8
-    toolVersion = "0.7.0.201403182114"
-}
+//jacoco {
+//    // Gradle 1.11 ships with a Jacoco version that doesn't support Java 8
+//    toolVersion = "0.7.0.201403182114"
+//}
 
 //apply plugin: "sonar"
 
