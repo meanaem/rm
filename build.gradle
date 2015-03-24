@@ -19,6 +19,7 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
 allprojects {
@@ -50,8 +51,32 @@ project(':model') {
     }
 }
 
+jacoco {
+    // Gradle 1.11 ships with a Jacoco version that doesn't support Java 8
+    toolVersion = "0.7.0.201403182114"
+}
+
+//apply plugin: "sonar"
+
+//sonar {
+//    server {
+//        url = "http://aarintechmain.dyndns.org:9000/sonar"
+//    }
+//    database {
+//        url = "jdbc:mysql://aarintechmain.dyndns.org/sonar"
+//        driverClassName = "com.mysql.jdbc.Driver"
+//        username = "sonar"
+//        password = "sonar"
+//    }
+//}
+
+//sonar.project {
+//    language = System.getProperty("sonar.language", "java")
+//}
 
 sonarRunner {
+    toolVersion = '2.4'
+
     sonarProperties {
         property "sonar.host.url", "http://aarintechmain.dyndns.org:9000/sonar"
         property "sonar.jdbc.url", "jdbc:mysql://aarintechmain.dyndns.org/sonar"
@@ -77,6 +102,6 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.0'
+    gradleVersion = '2.3'
 }
 
