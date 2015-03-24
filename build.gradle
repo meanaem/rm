@@ -20,7 +20,7 @@ repositories {
 }
 
 //apply plugin: "jacoco"
-apply plugin: "sonar-runner"
+apply plugin: "sonar"
 
 allprojects {
     apply plugin: 'java'
@@ -58,33 +58,33 @@ project(':model') {
 
 //apply plugin: "sonar"
 
-//sonar {
-//    server {
-//        url = "http://aarintechmain.dyndns.org:9000/sonar"
-//    }
-//    database {
-//        url = "jdbc:mysql://aarintechmain.dyndns.org/sonar"
-//        driverClassName = "com.mysql.jdbc.Driver"
-//        username = "sonar"
-//        password = "sonar"
-//    }
-//}
+sonar {
+    server {
+        url = "http://aarintechmain.dyndns.org:9000/sonar"
+    }
+    database {
+        url = "jdbc:mysql://aarintechmain.dyndns.org/sonar"
+        driverClassName = "com.mysql.jdbc.Driver"
+        username = "sonar"
+        password = "sonar"
+    }
+}
 
 //sonar.project {
 //    language = System.getProperty("sonar.language", "java")
 //}
 
-sonarRunner {
-    toolVersion = '2.4'
-
-    sonarProperties {
-        property "sonar.host.url", "http://aarintechmain.dyndns.org:9000/sonar"
-        property "sonar.jdbc.url", "jdbc:mysql://aarintechmain.dyndns.org/sonar"
-        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
-        property "sonar.jdbc.username", "sonar"
-        property "sonar.jdbc.password", "sonar"
-    }
-}
+//sonarRunner {
+//    toolVersion = '2.4'
+//
+//    sonarProperties {
+//        property "sonar.host.url", "http://aarintechmain.dyndns.org:9000/sonar"
+//        property "sonar.jdbc.url", "jdbc:mysql://aarintechmain.dyndns.org/sonar"
+//        property "sonar.jdbc.driverClassName", "com.mysql.jdbc.Driver"
+//        property "sonar.jdbc.username", "sonar"
+//        property "sonar.jdbc.password", "sonar"
+//    }
+//}
 
 dependencies {
     compile 'com.yammer.dropwizard:dropwizard-core:0.6.2'
