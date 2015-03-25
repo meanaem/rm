@@ -6,7 +6,7 @@ import java.util.List;
  * Created by vireshkj on 3/22/15.
  */
 public class BookingControl {
-    int capacity;
-    List<Cabin> cabins;
+    private int capacity;
+    private List<Cabin> cabins;
 
 }
