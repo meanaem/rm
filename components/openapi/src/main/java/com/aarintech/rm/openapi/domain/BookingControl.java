@@ -1,4 +1,4 @@
-package com.aarintech.rm.model;
+package com.aarintech.rm.openapi.domain;
 
 import java.util.List;
 

@@ -11,9 +11,7 @@ allprojects {
 subprojects {
     hello << { println "- I am part of rm" }
 }
-project(':model').hello << {
-    println "- I'm the largest animal that has ever lived on this planet."
-}
+
 
 repositories {
     mavenCentral()
@@ -24,12 +22,18 @@ apply plugin: "sonar-runner"
 
 allprojects {
     apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'jacoco'
+    apply plugin: 'maven'
     group = 'com.aarintech.rm'
     version = '1.0'
 }
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'groovy'
+    apply plugin: 'jacoco'
+    apply plugin: 'maven'
     group = 'com.aarintech.rm'
     version = '1.0'
     repositories {
@@ -40,14 +44,42 @@ subprojects {
     }
 }
 
-project(':engine') {
-    dependencies {
-        compile project(':model')
+project(':components') {
+    project('openapi') {
+
+    }
+
+    project('mongo') {
+
+    }
+
+    project('camel') {
+
+    }
+
+    project('common') {
+
+    }
+
+    project('gson') {
+
+    }
+
+    project('client') {
+
+    }
+
+    project('jms') {
+
     }
 }
 
-project(':model') {
-    dependencies {
+project(':engines') {
+
+    project('engine') {
+        dependencies {
+            compile project(':components:openapi')
+        }
     }
 }
 

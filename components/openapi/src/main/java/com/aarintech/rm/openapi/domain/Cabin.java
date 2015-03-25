@@ -1,4 +1,4 @@
-package com.aarintech.rm.model;
+package com.aarintech.rm.openapi.domain;
 
 /**
  * Created by vireshkj on 3/22/15.
