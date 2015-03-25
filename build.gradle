@@ -17,6 +17,179 @@ repositories {
     mavenCentral()
 }
 
+project.ext {
+    // Spring/Camel Libraries
+    springVersion = "4.1.4.RELEASE"
+    springBootVersion = "1.2.1.RELEASE"
+    springHateoasVersion = "0.16.0.RELEASE"
+    springPluginVersion = "1.1.0.RELEASE"
+    springCloudVersion = "1.0.0.RC3"
+    springCloudServiceVersion = "1.1.1.RELEASE"
+    camelVersion = "2.14.0"
+    servletApiVersion = "2.5"
+    springTestVersion = "1.0.0.M2"
+    aspectjVersion = "1.8.0"
+
+    // Utility Libraries
+    jodaVersion = "2.1"
+    guavaVersion = "16.0.1"
+    commonsLang3Version = "3.1"
+    commonsCollectionsVersion = "4.01"
+    commonsMathVersion = "2.2"
+    lombokVersion = "1.14.8"
+    rsqlVersion = "2.0.M1"
+    gsonVersion = "2.2.2"
+    jsonPatch = "1.7"
+    jacksonVersion = "2.4.1"
+    jsonSimpleVersion = "1.1"
+    jcTreeVersion = "2.0.0"
+    xercesVersion = "2.11.0"
+    jaxbXjcVersion = "2.2.4"
+    apacheHttpClientVersion = "4.4-alpha1"
+    jmsSpecVersion = "1.1@pom"
+    cglibNodepVersion = "3.1"
+    validationApiVersion = "1.1.0.Final"
+    hibernateValidatorVersion = "5.1.2.Final"
+    mailVersion = "1.4.6"
+
+    // JMS Libraries
+    activemqVersion = "5.5.1"
+    wmqVersion = "7.0.1.1"
+
+    // Logging Libraries
+    log4jVersion = "1.2.17"
+    slf4jVersion = "1.6.3"
+
+    // Persistence Libraries
+    jongoVersion = "1.1"
+    mongoVersion = "2.13.0"
+    embedMongoVersion = "1.46.0"
+
+    // Translation Libraries
+    poiVersion = "3.8"
+    opencsvVersion = "2.3"
+    velocityVersion = "1.7"
+    smooksVersion = "1.6"
+
+    // Test Libraries
+    junitVersion = "4.8.2"
+    mockitoVersion = "1.9.5"
+    powermockVersion = "1.5.4"
+    hamcrestVersion = "1.3"
+    spockVersion = "0.7-groovy-2.0"
+    spockReportsVersion = "20141013"
+    groovyVersion = "2.3.4"
+    dbunitVersion = "2.4.8"
+    dumbsterVersion = "1.6"
+    restAssuredVersion = "2.3.2"
+    xmlApisVersion = "1.4.01"
+    bootstrapVersion = "20150212"
+    jsonassertVersion = "1.2.3"
+    jsonpathassertVersion = "0.9.1"
+    gebVersion = "0.10.0"
+    seleniumVersion = "2.43.1"
+    wiremockVersion = "1.51"
+
+    // Rules
+    droolsVersion = "5.6.0.Final"
+
+    tomcatVersion = "7.0.50"
+    restmqVersion = "20150303.1000"
+    restSecurityVersion = "20150303.1000"
+
+}
+
+// Dependencies
+
+
+List logging = ["log4j:log4j:${project.log4jVersion}",
+                "org.slf4j:slf4j-log4j12:${project.slf4jVersion}",
+                "org.slf4j:slf4j-api:${project.slf4jVersion}"]
+List gson = ["com.google.code.gson:gson:${project.gsonVersion}",
+             "org.apache.poi:poi-ooxml:${project.poiVersion}",
+             "com.github.fge:json-patch:${project.jsonPatch}"]
+List csv = ["net.sf.opencsv:opencsv:${project.opencsvVersion}"]
+List mail = ["javax.mail:mail:${project.mailVersion}"]
+List guava = ["com.google.guava:guava:${project.guavaVersion}"]
+List camel = ["org.apache.camel:camel-mail:${project.camelVersion}",
+              "org.apache.camel:camel-core:${project.camelVersion}",
+              "org.apache.camel:camel-jaxb:${project.camelVersion}",
+              "org.apache.camel:camel-jackson:${project.camelVersion}",
+              "org.apache.camel:camel-mail:${project.camelVersion}",
+              "org.apache.camel:camel-http4:${project.camelVersion}",
+              "org.apache.camel:camel-jms:${project.camelVersion}",
+              "org.apache.camel:camel-servlet:${project.camelVersion}"]
+List camelXmlJson = ["org.apache.camel:camel-xmljson:${project.camelVersion}"]
+List jms = ["javax.jms:jms:${jmsSpecVersion}",
+            "org.apache.activemq:activemq-core:${project.activemqVersion}",
+            "com.ibm:com.ibm.mq:${project.wmqVersion}",
+            "com.ibm:com.ibm.mqjms:${project.wmqVersion}",
+            "com.ibm:com.ibm.dhbcore:${project.wmqVersion}",
+            "com.ibm:com.ibm.mq.jmqi:${project.wmqVersion}"]
+List joda = ["joda-time:joda-time:${jodaVersion}"]
+List commons = ["org.apache.commons:commons-lang3:${commonsLang3Version}",
+                "net.sourceforge.collections:collections-generic:${commonsCollectionsVersion}"]
+List lombok = ["org.projectlombok:lombok:${lombokVersion}"]
+List math = ["org.apache.commons:commons-math:${commonsMathVersion}"]
+List mongo = ["org.jongo:jongo:${jongoVersion}",
+              "org.mongodb:mongo-java-driver:${mongoVersion}",
+              "de.flapdoodle.embed:de.flapdoodle.embed.mongo:${embedMongoVersion}"]
+List unitTest = ["junit:junit:${junitVersion}",
+                 "org.mockito:mockito-core:${mockitoVersion}",
+                 "org.powermock:powermock-module-junit4:${powermockVersion}",
+                 "org.powermock:powermock-api-mockito:${powermockVersion}",
+                 "org.powermock:powermock-core:${powermockVersion}",
+                 "org.powermock:powermock-module-junit4:${powermockVersion}",
+                 "org.hamcrest:hamcrest-all:${hamcrestVersion}"]
+List mailTest = ["dumbster:dumbster:${project.dumbsterVersion}"]
+List acceptanceLibs = ["org.spockframework:spock-core:${spockVersion}",
+                       "org.spockframework:spock-spring:${spockVersion}",
+                       "org.codehaus.groovy:groovy-all:${groovyVersion}",
+                       "org.skyscreamer:jsonassert:${jsonassertVersion}",
+                       "com.jayway.jsonpath:json-path-assert:${jsonpathassertVersion}"]
+List camelTest = ["org.apache.camel:camel-test:${project.camelVersion}"]
+List aop = ["org.aspectj:aspectjrt:${project.aspectjVersion}",
+            "org.aspectj:aspectjweaver:${project.aspectjVersion}",
+            "cglib:cglib-nodep:${cglibNodepVersion}"]
+List springBoot = ["org.springframework.boot:spring-boot-loader:${project.springBootVersion}",
+                   "org.springframework.boot:spring-boot-starter-web:${project.springBootVersion}",
+                   "org.springframework.hateoas:spring-hateoas:${project.springHateoasVersion}",
+                   "org.springframework.plugin:spring-plugin-core:${project.springPluginVersion}",
+                   "org.springframework:spring-tx:${springVersion}"]
+List drools = ["org.drools:knowledge-api:${project.droolsVersion}",
+               "org.drools:drools-core:${project.droolsVersion}",
+               "org.drools:drools-compiler:${project.droolsVersion}",
+               "com.sun.xml.bind:jaxb-xjc:${jaxbXjcVersion}",
+               "com.google.protobuf:protobuf-java:2.5.0"]
+List velocity = ["org.apache.velocity:velocity:${project.velocityVersion}",
+                 "org.springframework:spring-context-support:3.0.5.RELEASE"]
+List validation = ["javax.validation:validation-api:${validationApiVersion}",
+                   "org.hibernate:hibernate-validator:${hibernateValidatorVersion}",
+                   "org.apache.tomcat:tomcat-jasper-el:${tomcatVersion}"]
+List xmlApis = ["xml-apis:xml-apis:${project.xmlApisVersion}"]
+List servicesTest = ["org.springframework:spring-test-mvc:${project.springTestVersion}"]
+List rql = ["cz.jirutka.rsql:rsql-parser:${rsqlVersion}"]
+List jackson = ["com.fasterxml.jackson.core:jackson-core:${project.jacksonVersion}",
+                "com.fasterxml.jackson.core:jackson-databind:${project.jacksonVersion}",
+                "com.fasterxml.jackson.datatype:jackson-datatype-joda:${project.jacksonVersion}"]
+List jsonSimple = ["com.googlecode.json-simple:json-simple:${project.jsonSimpleVersion}"]
+List apacheHttp = ["org.apache.httpcomponents:httpclient:${project.apacheHttpClientVersion}"]
+List xerces = ["org.apache.xerces:xercesImpl:${project.xercesVersion}"]
+List xercesResolver = ["org.apache.xerces:resolver:${project.xercesVersion}"]
+List smooksCamel = ["org.milyn:milyn-smooks-csv:${project.smooksVersion}",
+                    "org.milyn:milyn-smooks-edi:${project.smooksVersion}",
+                    "org.milyn:milyn-smooks-camel:${project.smooksVersion}",
+                    "org.milyn:milyn-smooks-templating:${project.smooksVersion}"]
+List wiremock = ["com.github.tomakehurst:wiremock:${project.wiremockVersion}"]
+List jcTree = ["com.googlecode.jctree:jctree:${project.jcTreeVersion}"]
+List springCloud = ["org.springframework.cloud:spring-cloud-spring-service-connector:${springCloudServiceVersion}",
+                    "org.springframework.cloud:spring-cloud-config-client:${springCloudVersion}",
+                    "org.springframework.cloud:spring-cloud-config-server:${springCloudVersion}"]
+
+dependencies {
+    compile logging, guava, lombok
+}
+
 apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
@@ -46,7 +219,9 @@ subprojects {
 
 project(':components') {
     project('openapi') {
-
+        dependencies {
+            compile guava, lombok
+        }
     }
 
     project('mongo') {
