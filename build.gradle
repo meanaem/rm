@@ -220,7 +220,7 @@ subprojects {
 project(':components') {
     project('openapi') {
         dependencies {
-            compile guava, lombok
+            compile guava, lombok, springBoot, joda
         }
     }
 
@@ -230,7 +230,7 @@ project(':engines') {
 
     project('engine') {
         dependencies {
-            compile project(':components:openapi')
+            compile project(':components:openapi'), springBoot, joda
         }
     }
 }
