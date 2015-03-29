@@ -224,29 +224,6 @@ project(':components') {
         }
     }
 
-//    project('mongo') {
-//
-//    }
-//
-//    project('camel') {
-//
-//    }
-//
-//    project('common') {
-//
-//    }
-//
-//    project('gson') {
-//
-//    }
-//
-//    project('client') {
-//
-//    }
-//
-//    project('jms') {
-//
-//    }
 }
 
 project(':engines') {
