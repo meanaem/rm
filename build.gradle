@@ -213,7 +213,7 @@ subprojects {
         mavenCentral()
     }
     dependencies {
-        testCompile "junit:junit:4.11", acceptanceLibs
+        testCompile "junit:junit:4.11", acceptanceLibs, unitTest
     }
 }
 
@@ -224,29 +224,29 @@ project(':components') {
         }
     }
 
-    project('mongo') {
-
-    }
-
-    project('camel') {
-
-    }
-
-    project('common') {
-
-    }
-
-    project('gson') {
-
-    }
-
-    project('client') {
-
-    }
-
-    project('jms') {
-
-    }
+//    project('mongo') {
+//
+//    }
+//
+//    project('camel') {
+//
+//    }
+//
+//    project('common') {
+//
+//    }
+//
+//    project('gson') {
+//
+//    }
+//
+//    project('client') {
+//
+//    }
+//
+//    project('jms') {
+//
+//    }
 }
 
 project(':engines') {
