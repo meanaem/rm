@@ -1,3 +1,3 @@
-include 'components:openapi', 'components:common', 'components:camel', 'components:gson', 'components:jms', 'components:mongo', 'components:client'
+include 'components:openapi'
 include 'engines:engine'
 
