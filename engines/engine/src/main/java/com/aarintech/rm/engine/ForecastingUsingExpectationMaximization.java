@@ -26,7 +26,7 @@ public class ForecastingUsingExpectationMaximization {
     if (forcastedDemandAtDeparture == null) {
       forcastedDemandAtDeparture =
           forecastDemandUsingSimpleAverageMethod(
-              historicalBookingCache.getBookingsAt(0, flightNumber, cabinClass, departureDateTime));
+              historicalBookingCache.getBookingsAt(0, flightNumber, cabinClass));
     }
     return forcastedDemandAtDeparture;
 
