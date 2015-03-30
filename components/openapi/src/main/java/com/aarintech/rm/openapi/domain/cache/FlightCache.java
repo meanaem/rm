@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class FlightCache {
 
-  Map<String, Flight> flights;
+  private Map<String, Flight> flights;
 
 
   public Flight getFlight(String flightNumber) {

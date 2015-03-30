@@ -188,12 +188,24 @@ class ForecastingUsingExpectationMaximizationTest {
     }
 
     @Test
-    public void correctlyCalculatesForecastedDemandAtDepartureTime() throws Exception {
+    public void correctlyCalculatesForecastedDemandAtDepartureTimeWhenDemandAtDepartureIsNotAvailable()
+            throws Exception {
         def demandAtDepartureDate = forecastingUsingExpectationMaximization.
                 getForcastedDemandAtDepartureDate(FLIGHT_NUMBER, CABIN_CLASS,
                                                   formatter.parseDateTime("2014-10-26"))
 
         assertThat(demandAtDepartureDate, Is.is(28))
+
+    }
+
+    @Test
+    public void correctlyCalculatesForecastedDemandAtDepartureTimeWhenDemandAtDepartureIsAvailable()
+            throws Exception {
+        def demandAtDepartureDate = forecastingUsingExpectationMaximization.
+                getForcastedDemandAtDepartureDate(FLIGHT_NUMBER, CABIN_CLASS,
+                                                  formatter.parseDateTime("2014-10-12"))
+
+        assertThat(demandAtDepartureDate, Is.is(27))
 
     }
 

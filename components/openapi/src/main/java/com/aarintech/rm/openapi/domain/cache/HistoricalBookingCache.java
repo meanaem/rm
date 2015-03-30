@@ -17,8 +17,7 @@ import static com.google.common.collect.Maps.newHashMap;
 @Component
 public class HistoricalBookingCache {
 
-  Map<String, Table<DateTime, Integer, Integer>> historicalBookings = newHashMap();
-//  HashBasedTable.create();
+  private Map<String, Table<DateTime, Integer, Integer>> historicalBookings = newHashMap();
 
   public Integer getBookings(String flightNumber, String cabinClass, DateTime departureDateTime,
                          int daysBeforeDeparture) {
@@ -30,10 +29,6 @@ public class HistoricalBookingCache {
         historyForGivenDepartureDate =
         historicalBookingForGivenFlight.row(departureDateTime);
     return historyForGivenDepartureDate.get(daysBeforeDeparture);
-  }
-
-  private String getBookingKey(String flightNumber, String cabinClass) {
-    return flightNumber + "_" + cabinClass;
   }
 
   public void addBooking(String flightNumber, String cabinClass, DateTime departureDateTime,
@@ -55,14 +50,17 @@ public class HistoricalBookingCache {
     return dateTimeIntegerIntegerTable;
   }
 
-
   public Collection<Integer> getBookingsAt(int daysBeforeDeparture, String flightNumber,
-                                           String cabinClass,
-                                           DateTime departureDateTime) {
+                                           String cabinClass) {
 
     Table<DateTime, Integer, Integer>
         dateTimeIntegerIntegerTable =
         historicalBookings.get(getBookingKey(flightNumber, cabinClass));
     return dateTimeIntegerIntegerTable.column(daysBeforeDeparture).values();
+  }
+
+
+  private String getBookingKey(String flightNumber, String cabinClass) {
+    return flightNumber + "_" + cabinClass;
   }
 }

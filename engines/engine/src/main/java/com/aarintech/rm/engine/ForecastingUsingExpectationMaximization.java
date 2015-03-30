@@ -15,22 +15,20 @@ import javax.annotation.Resource;
  */
 public class ForecastingUsingExpectationMaximization {
 
-  @Resource HistoricalBookingCache historicalBookingCache;
+  @Resource private HistoricalBookingCache historicalBookingCache;
 
   public Integer getForcastedDemandAtDepartureDate(String flightNumber, String cabinClass,
                                                    DateTime departureDateTime) {
 
-    Integer forcastedDemand = null;
-    Integer
-        historicalBookings =
+    Integer forcastedDemandAtDeparture =
         historicalBookingCache.getBookings(flightNumber, cabinClass, departureDateTime, 0);
 
-    if (historicalBookings == null) {
-      forcastedDemand =
+    if (forcastedDemandAtDeparture == null) {
+      forcastedDemandAtDeparture =
           forecastDemandUsingSimpleAverageMethod(
               historicalBookingCache.getBookingsAt(0, flightNumber, cabinClass, departureDateTime));
     }
-    return forcastedDemand;
+    return forcastedDemandAtDeparture;
 
   }
 
