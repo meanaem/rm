@@ -32,19 +32,24 @@ class FlightTest {
     @Before
     public void setUp() {
         flight = new Flight(cabins: [mockCabin1, mockCabin2, mockCabin3, mockCabin4, mockCabin5])
+        Mockito.when(mockCabin1.getCabinClass()).thenReturn("A")
+        Mockito.when(mockCabin2.getCabinClass()).thenReturn("B")
+        Mockito.when(mockCabin3.getCabinClass()).thenReturn("C")
+        Mockito.when(mockCabin4.getCabinClass()).thenReturn("D")
+        Mockito.when(mockCabin5.getCabinClass()).thenReturn("E")
     }
 
     @Test
     public void correctlyFiltersListOfCabinsGivenACabinClass() throws Exception {
-
-        Mockito.when(mockCabin1.getCabinClass()).thenReturn("A")
         Mockito.when(mockCabin2.getCabinClass()).thenReturn(CABIN_CLASS)
-        Mockito.when(mockCabin3.getCabinClass()).thenReturn("B")
-        Mockito.when(mockCabin4.getCabinClass()).thenReturn("C")
-        Mockito.when(mockCabin5.getCabinClass()).thenReturn("D")
         Cabin cabin = flight.getCabin(CABIN_CLASS)
         assertThat(cabin, Is.is(mockCabin2))
+    }
 
-
+    @Test
+    public void correctlyFiltersListOfCabinsGivenACabinClassThatDoesNotExist() throws Exception {
+        Mockito.when(mockCabin1.getCabinClass()).thenReturn(CABIN_CLASS)
+        Cabin cabin = flight.getCabin(CABIN_CLASS + "DoesNotExist")
+        assertThat(cabin, Is.is(null))
     }
 }

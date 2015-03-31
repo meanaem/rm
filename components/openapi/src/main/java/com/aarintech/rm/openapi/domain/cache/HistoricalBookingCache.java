@@ -17,7 +17,9 @@ import static com.google.common.collect.Maps.newHashMap;
 @Component
 public class HistoricalBookingCache {
 
-  private Map<String, Table<DateTime, Integer, Integer>> historicalBookings = newHashMap();
+  private final transient Map<String, Table<DateTime, Integer, Integer>>
+      historicalBookings =
+      newHashMap();
 
   public Integer getBookings(String flightNumber, String cabinClass, DateTime departureDateTime,
                          int daysBeforeDeparture) {

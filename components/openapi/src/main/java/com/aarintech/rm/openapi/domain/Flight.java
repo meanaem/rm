@@ -16,7 +16,7 @@ public class Flight {
     Collection<Cabin>
         matchingCabins =
         filter(cabins, cabin -> cabin.getCabinClass().equals(cabinClass));
-    if (matchingCabins != null) {
+    if (matchingCabins != null && !matchingCabins.isEmpty()) {
       return matchingCabins.iterator().next();
     }
     return null;
