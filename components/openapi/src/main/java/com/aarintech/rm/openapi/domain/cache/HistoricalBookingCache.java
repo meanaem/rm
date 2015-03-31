@@ -24,20 +24,19 @@ public class HistoricalBookingCache {
   public Integer getBookings(String flightNumber, String cabinClass, DateTime departureDateTime,
                          int daysBeforeDeparture) {
     String bookingKey = getBookingKey(flightNumber, cabinClass);
-    final Table<DateTime, Integer, Integer>
+    Table<DateTime, Integer, Integer>
         historicalBookingForGivenFlight =
         historicalBookings.get(bookingKey);
-    final Map<Integer, Integer>
+    Map<Integer, Integer>
         historyForGivenDepartureDate =
         historicalBookingForGivenFlight.row(departureDateTime);
-    final Integer bookings = historyForGivenDepartureDate.get(daysBeforeDeparture);
-    return bookings;
+    return historyForGivenDepartureDate.get(daysBeforeDeparture);
   }
 
   public void addBooking(String flightNumber, String cabinClass, DateTime departureDateTime,
                          int daysBeforeDeparture, Integer numberOfBookings) {
-    final String bookingKey = getBookingKey(flightNumber, cabinClass);
-    final Table<DateTime, Integer, Integer> historicalBookingForGivenFlight = getTable(bookingKey);
+    String bookingKey = getBookingKey(flightNumber, cabinClass);
+    Table<DateTime, Integer, Integer> historicalBookingForGivenFlight = getTable(bookingKey);
     historicalBookingForGivenFlight.put(departureDateTime, daysBeforeDeparture, numberOfBookings);
     historicalBookings.put(bookingKey, historicalBookingForGivenFlight);
   }
@@ -56,14 +55,10 @@ public class HistoricalBookingCache {
   public Collection<Integer> getBookingsAt(int daysBeforeDeparture, String flightNumber,
                                            String cabinClass) {
 
-    final String bookingKey = getBookingKey(flightNumber, cabinClass);
-    final Table<DateTime, Integer, Integer>
+    Table<DateTime, Integer, Integer>
         dateTimeIntegerIntegerTable =
-        historicalBookings.get(bookingKey);
-    final Collection<Integer>
-        bookings =
-        dateTimeIntegerIntegerTable.column(daysBeforeDeparture).values();
-    return bookings;
+        historicalBookings.get(getBookingKey(flightNumber, cabinClass));
+    return dateTimeIntegerIntegerTable.column(daysBeforeDeparture).values();
   }
 
 
