@@ -13,7 +13,7 @@ public class Flight {
   List<Cabin> cabins;
 
   public Cabin getCabin(String cabinClass) {
-    Collection<Cabin>
+    final Collection<Cabin>
         matchingCabins =
         filter(cabins, cabin -> cabin.getCabinClass().equals(cabinClass));
     if (matchingCabins != null && !matchingCabins.isEmpty()) {
